@@ -1,10 +1,12 @@
+<h1><%= @list.name %></h1>
 <div class="row mb-3">
   <% @bookmarks.each do |bookmark|%>
-    <div class="col">
+    <div class="col-4">
       <%= render "bookmark", bookmark: bookmark %>
     </div>
   <% end %>
 </div>
-<div class="d-flex justify-content-center">
+
+<div class="d-flex justify-content-center mb-3">
   <%= link_to "Add a new bookmark!", new_list_bookmark_path(@list), class: "btn btn-primary" %>
 </div>

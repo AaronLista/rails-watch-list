@@ -7,18 +7,18 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-puts 'creando peliculas'
-wonder_woman = Movie.create(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
-shawshank = Movie.create(title: "The Shawshank Redemption", overview: "Framed in the 1940s for double murder, upstanding banker Andy Dufresne begins a new life at the Shawshank prison", poster_url: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg", rating: 8.7)
-titanic = Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
-ocean = Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
+require 'open-uri'
+require 'json'
 
-puts 'creando lista'
-list = List.create(name: "lista 1")
+url = 'https://tmdb.lewagon.com/movie/top_rated?language=en-US&page=1'
+data_serealized = URI.open(url).read
+data = JSON.parse(data_serealized)
 
-puts 'creando bookmarks'
-
-Bookmark.create(comment: 'lorem ipsum', list: list, movie: wonder_woman)
-Bookmark.create(comment: 'lorem ipsum', list: list, movie: shawshank)
-Bookmark.create(comment: 'lorem ipsum', list: list, movie: titanic)
-Bookmark.create(comment: 'lorem ipsum', list: list, movie: ocean)
+puts 'creando base de datos de peliculas'
+data['results'].each do |movie|
+  Movie.create(title: movie['title'],
+               overview: movie['overview'],
+               poster_url: movie['poster_path'],
+               rating: movie['vote_average'])
+end
+puts "#{data['results'].size} peliculas creadas"
