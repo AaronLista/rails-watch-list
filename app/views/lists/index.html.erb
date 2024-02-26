@@ -1,0 +1,10 @@
+<h1>hola mundo</h1>
+<ul class="list-group">
+  <% @lists.each do |list| %>
+    <li class="list-group-item">
+      <%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0" do%>
+        <%= list.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
