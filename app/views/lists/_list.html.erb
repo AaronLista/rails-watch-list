@@ -1,0 +1,17 @@
+<div class="col-4">
+  <%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0 text-dark" do%>
+    <div class="card">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key if list.photo.attached? %>);">
+        <%= list.name %>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <span class="badge text-bg-primary rounded-pill">
+          <%= list.bookmarks.size %> bookmarks
+        </span>
+        <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "text-dark" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
