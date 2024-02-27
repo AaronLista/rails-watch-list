@@ -8,7 +8,7 @@
 </div>
 <div class="row mb-3 d-flex justify-content-center">
   <% @bookmarks.each do |bookmark|%>
-    <div class="col-4">
+    <div class="col col-lg-4 col-md-6 col-sm-12">
       <%= render "bookmark", bookmark: bookmark %>
     </div>
   <% end %>
@@ -32,7 +32,15 @@
 </div>
 <hr>
 <div class="row pb-3">
-  <div class="col-8">
+  <div class="col-12 col-lg-4 col-md-4 col-sm-12 mb-5">
+    <h3>add your review</h3>
+    <%= simple_form_for [@list, @review] do |f|%>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.button :submit, "Create", class: "btn btn-success w-100" %>
+    <% end %>
+  </div>
+  <div class="col-12 col-lg-8 col-md-8 col-sm-12 mb-3">
     <h3>reviews</h3>
     <ul class="list-group">
       <% @reviews.each do |review| %>
@@ -49,13 +57,5 @@
           </li>
       <% end %>
     </ul>
-  </div>
-  <div class="col">
-    <h3>add your review</h3>
-    <%= simple_form_for [@list, @review] do |f|%>
-      <%= f.input :content %>
-      <%= f.input :rating %>
-      <%= f.button :submit, "Create", class: "btn btn-success w-100" %>
-    <% end %>
   </div>
 </div>

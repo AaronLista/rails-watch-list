@@ -4,7 +4,7 @@
   </div>
 </div>
 <% if @lists.size > 0 %>
-  <div class="row mb-3">
+  <div class="row">
     <% @lists.each do |list| %>
       <%= render "list", list: list %>
     <% end %>

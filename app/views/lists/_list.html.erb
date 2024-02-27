@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-12 col-lg-4 col-md-6 col-sm-12">
   <%= link_to list_path(list), class: "link-offset-2 link-underline link-underline-opacity-0 text-dark" do%>
     <div class="card">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key if list.photo.attached? %>);">
