@@ -6,16 +6,17 @@
     <p class="card-text">
       <%= bookmark.movie.overview %>
     </p>
-    <div class="card-footer">
-      <p class="card-text">
-        <%= bookmark.comment %>
-      </p>
-      <span>
-        <%= bookmark.movie.rating %><i class="fa-solid fa-star"></i>
-        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "text-dark" do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end %>
-      </span>
-    </div>
+  </div>
+
+  <div class="card-footer">
+    <p class="card-text">
+      <%= bookmark.comment %>
+    </p>
+    <span>
+      <%= bookmark.movie.rating %><i class="fa-solid fa-star"></i>
+      <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "text-dark" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </span>
   </div>
 </div>

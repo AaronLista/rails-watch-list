@@ -10,14 +10,16 @@
           <%= list.bookmarks.size %> bookmarks
         </span>
 
-        <span>
-          <% (list.reviews.sum {|review| review.rating}/ list.reviews.size).to_int.times do %>
-            <i class="fa-solid fa-star"></i>
-          <% end %>
-          <% (5-(list.reviews.sum {|review| review.rating}/ list.reviews.size)).to_int.times do %>
-            <i class="fa-regular fa-star"></i>
-          <% end %>
-        </span>
+        <% if list.reviews.size > 0 %>
+          <span>
+            <% (list.reviews.sum {|review| review.rating}/ list.reviews.size).to_int.times do%>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5-(list.reviews.sum {|review| review.rating}/ list.reviews.size)).to_int.times do%>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          </span>
+        <% end %>
 
 
         <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "text-dark" do %>

@@ -11,3 +11,17 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.card-body {
+  .card-text{
+    height: 150px;
+    overflow-y: auto;
+  }
+  .card-text::-webkit-scrollbar{
+    width: 5px;
+  }
+  .card-text::-webkit-scrollbar-thumb{
+    background-color: #a3a3a3;
+    border-radius: 2px;
+  }
+}
