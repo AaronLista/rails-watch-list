@@ -37,7 +37,7 @@
     <ul class="list-group">
       <% @reviews.each do |review| %>
           <li class="list-group-item d-flex justify-content-between my-1">
-            <div><%= review.content %></div>
+            <div class="text-break w-75"><%= review.content %></div>
             <div>
             <% review.rating.times do %>
               <i class="fa-solid fa-star"></i>
