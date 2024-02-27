@@ -6,7 +6,7 @@
     </button>
   </div>
 </div>
-<div class="row mb-3">
+<div class="row mb-3 d-flex justify-content-center">
   <% @bookmarks.each do |bookmark|%>
     <div class="col-4">
       <%= render "bookmark", bookmark: bookmark %>
@@ -31,25 +31,31 @@
   </div>
 </div>
 <hr>
-<h2>reviews</h2>
-<%= simple_form_for [@list, @review] do |f|%>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.button :submit, "Create", class: "btn btn-success w-100" %>
-<% end %>
-<hr>
-<ul class="list-group">
-  <% @reviews.each do |review| %>
-      <li class="list-group-item d-flex justify-content-between my-1">
-        <div><%= review.content %></div>
-        <div>
-        <% review.rating.times do %>
-          <i class="fa-solid fa-star"></i>
-        <% end %>
-        <% (5 - review.rating).times do %>
-          <i class="fa-regular fa-star"></i>
-        <% end %>
-        </div>
-      </li>
-  <% end %>
-</ul>
+<div class="row pb-3">
+  <div class="col-8">
+    <h3>reviews</h3>
+    <ul class="list-group">
+      <% @reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between my-1">
+            <div><%= review.content %></div>
+            <div>
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+            </div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col">
+    <h3>add your review</h3>
+    <%= simple_form_for [@list, @review] do |f|%>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.button :submit, "Create", class: "btn btn-success w-100" %>
+    <% end %>
+  </div>
+</div>
